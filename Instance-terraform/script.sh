@@ -26,7 +26,7 @@ newgrp docker
 sudo chmod 777 /var/run/docker.sock
 sudo systemctl restart docker
 sudo systemctl restart jenkins
-docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+# docker run -d --name sonar -p 9000:9000 sonarqube:lts-community - Use SONARCLOUD INSTEAD
 
 # Install Trivy
 sudo apt-get install apt-transport-https lsb-release -y
