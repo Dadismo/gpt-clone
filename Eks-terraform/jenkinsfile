@@ -34,17 +34,22 @@ pipeline{
         }
         stage('Terraform plan'){
              steps{
-                 dir('Eks-terraform') {
-                      sh 'terraform plan'
-                   }
+                dir('Eks-terraform') {
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: 'AWS-cred'
+                    ]]) {  
+                    sh 'terraform plan'
+                    }
+                }
              }
         }
         stage('Terraform apply/destroy'){
-             steps{
-                 dir('Eks-terraform') {
-                      sh 'terraform ${action} --auto-approve'
-                   }
-             }
+            steps{
+                dir('Eks-terraform') {
+                    sh 'terraform ${action} --auto-approve'
+                }
+            }
         }
     }
 }
