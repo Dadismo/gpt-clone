@@ -4,7 +4,7 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-# Install Temurin 17 JDK
+# Install openjdk 17 JDK
 sudo apt-get install wget -y
 sudo apt-get install openjdk-17-jdk -y
 /usr/bin/java --version
